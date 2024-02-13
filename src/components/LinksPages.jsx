@@ -6,7 +6,7 @@ const LinksPages = () => {
       <div
         to={"/"}
         style={{ color: "rgba(176, 176, 176, 1)" }}
-        className="mr-4"
+        className="mr-4 "
       >
         Главная
       </div>
