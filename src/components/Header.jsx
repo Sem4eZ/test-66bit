@@ -8,8 +8,8 @@ const Header = () => {
   return (
     <header className="shadow-md " data-theme={isDark ? "dark" : "light"}>
       <div
-        className="mx-auto flex max-w-[1560px]
-    max-h-[90px] items-center justify-between p-6 lg:px-8 "
+        className="mx-auto flex max-w-[1590px]
+    max-h-[90px] items-center justify-between p-6 px-6 "
       >
         <div className="header__logo flex items-end">
           <div>
