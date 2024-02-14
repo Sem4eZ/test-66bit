@@ -41,7 +41,7 @@ const Header = () => {
             </svg>
           </div>
         </div>
-        <div className="flex items-center">
+        <nav className="flex items-center">
           <div className="font-normal pr-16 max-[600px]:hidden">
             +7 343 290 84 76
           </div>
@@ -54,7 +54,7 @@ const Header = () => {
               handleChange={() => setIsDark(!isDark)}
             />
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );

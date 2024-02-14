@@ -2,7 +2,7 @@ import React from "react";
 
 const SelectEmployees = () => {
   return (
-    <div className=" flex lg:flex justify-center font-normal text-xl py-6 text-[12px] sm:text-[20px]">
+    <div className="flex sm:justify-center font-normal pt-3 pb-4 md:py-6 text-[12px] sm:text-[20px] gap-3 sm:gap-8">
       <div className="">
         <select>
           <option value="someOption">Должность</option>
@@ -10,7 +10,7 @@ const SelectEmployees = () => {
         </select>
       </div>
       <div>
-        <select>
+        <select className="sm:w-16 md:w-18 lg:w-[70px] w-12">
           <option value="someOption">Пол</option>
           <option value="otherOption">Other option</option>
         </select>
