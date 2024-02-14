@@ -2,8 +2,9 @@ import React from "react";
 import SelectEmployees from "./SelectEmployees";
 import InputSearchEmployees from "./InputSearchEmployees";
 import ChooseFilters from "./ChooseFilters";
+import ListEmployees from "./ListEmployees";
 
-const ListEmployees = () => {
+const Employees = () => {
   return (
     <div>
       <div className="container mx-auto max-w-[1590px] px-6 font-medium lg:my-7 items-center justify-between md:flex ">
@@ -17,8 +18,9 @@ const ListEmployees = () => {
       </div>
       <InputSearchEmployees />
       <ChooseFilters />
+      <ListEmployees />
     </div>
   );
 };
 
-export default ListEmployees;
+export default Employees;

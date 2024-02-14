@@ -1,12 +1,12 @@
 import React from "react";
 import LinksPages from "./LinksPages";
-import ListEmployees from "./ListEmployees/ListEmployees";
+import Employees from "./Employees/Employees";
 
 const Home = () => {
   return (
     <div>
       <LinksPages />
-      <ListEmployees />
+      <Employees />
     </div>
   );
 };
