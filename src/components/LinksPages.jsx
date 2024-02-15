@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const LinksPages = ({ name }) => {
-  
+  const { theme } = useSelector((state) => state.theme);
+
   return (
-    <div className="container flex mx-auto max-w-[1590px] pl-6 font-medium my-7 items-center overflow-x-hidden">
+    <div className="container flex mx-auto max-w-[1590px] pl-6 font-medium my-7 items-center overflow-x-hidden bg-slate-600">
       {!name && (
         <>
           <button
             to={"/"}
-            style={{ color: "rgba(176, 176, 176, 1)" }}
-            className="mr-4 hover:underline"
+            className={`mr-4 hover:underline ${
+              theme === "dark" ? "text-[#b0b0b0]" : "text-[#b0b0b0]"
+            }`}
           >
             Главная
           </button>
@@ -34,8 +37,9 @@ const LinksPages = ({ name }) => {
       )}
       <Link to={"/"}>
         <button
-          style={{ color: "rgba(176, 176, 176, 1)" }}
-          className="mr-4 hover:underline"
+          className={`mr-4 hover:underline ${
+            theme === "dark" ? "text-[#b0b0b0]" : "text-[#b0b0b0]"
+          }`}
         >
           Список сотрудников
         </button>
