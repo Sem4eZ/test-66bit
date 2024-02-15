@@ -1,13 +1,22 @@
 import React from "react";
 import { Toggle } from "./Toggle/Toggle";
+import { useDispatch, useSelector } from "react-redux";
 import useLocalStorage from "use-local-storage";
 import { Link } from "react-router-dom";
+import { setTheme } from "../redux/slices/themeSlice";
 
 const Header = () => {
   const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [isDark, setIsDark] = useLocalStorage("isDark", preference);
+  const dispatch = useDispatch();
+  const { theme } = useSelector((state) => state.theme);
+
+  const handleThemeChange = () => {
+    setIsDark(!isDark);
+    dispatch(setTheme(isDark ? "light" : "dark"));
+  };
   return (
-    <header className="shadow-md " data-theme={isDark ? "dark" : "light"}>
+    <header className={`shadow-md ${theme === "dark" ? "bg-[#292929]" : ""} `}>
       <div
         className="mx-auto flex max-w-[1590px]
     max-h-[90px] items-center justify-between p-6 px-6 "
@@ -45,17 +54,22 @@ const Header = () => {
           </Link>
         </div>
         <nav className="flex items-center">
-          <div className="font-normal pr-16 max-[600px]:hidden">
+          <div
+            className={`font-normal pr-16 max-[600px]:hidden ${
+              theme == "dark" ? "text-[#f5f5f5]" : "text-black"
+            }`}
+          >
             +7 343 290 84 76
           </div>
-          <div className="font-normal pr-12 max-[600px]:hidden">
+          <div
+            className={`font-normal pr-12 max-[600px]:hidden ${
+              theme == "dark" ? "text-[#f5f5f5]" : "text-black"
+            }`}
+          >
             info@66bit.ru
           </div>
           <div>
-            <Toggle
-              isChecked={isDark}
-              handleChange={() => setIsDark(!isDark)}
-            />
+            <Toggle isChecked={isDark} handleChange={handleThemeChange} />
           </div>
         </nav>
       </div>

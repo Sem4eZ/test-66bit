@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const LinksPages = ({ name }) => {
+  
   return (
     <div className="container flex mx-auto max-w-[1590px] pl-6 font-medium my-7 items-center overflow-x-hidden">
       {!name && (
