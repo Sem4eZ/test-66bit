@@ -2,6 +2,7 @@ import React, { useState, useEffect, useNavigate } from "react";
 // import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import LinksPages from "../LinksPages";
 
 const ProfileEmployee = () => {
   //   const { employees } = useSelector((state) => state.employee);
@@ -30,6 +31,7 @@ const ProfileEmployee = () => {
 
   return (
     <div className="container">
+      <LinksPages name={employee.name} />
       <div>{employee.name}</div>
       <img src={employee.photo} alt="" />
       <div>{employee.phone}</div>
