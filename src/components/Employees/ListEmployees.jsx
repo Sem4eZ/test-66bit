@@ -8,16 +8,26 @@ const ListEmployees = () => {
   const dispatch = useDispatch();
   const { employees } = useSelector((state) => state.employee);
   const { search } = useSelector((state) => state.search);
+  const { position, gender, stack } = useSelector((state) => state.filter);
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
 
   const filteredEmployees = employees.filter(
     (employee) =>
-      employee.name.toLowerCase().includes(search.toLowerCase()) ||
-      employee.position.toLowerCase().includes(search.toLowerCase()) ||
-      employee.phone.toLowerCase().includes(search.toLowerCase()) ||
-      employee.birthdate.toLowerCase().includes(search.toLowerCase())
+      (employee.name.toLowerCase().includes(search.toLowerCase()) ||
+        employee.position.toLowerCase().includes(search.toLowerCase()) ||
+        employee.phone.toLowerCase().includes(search.toLowerCase()) ||
+        employee.birthdate.toLowerCase().includes(search.toLowerCase())) &&
+      (position === "" || employee.position === position) &&
+      (gender === "" || employee.gender === gender) &&
+      (stack === "" || employee.stack.includes(stack))
   );
+
+  useEffect(() => {
+    if (filteredEmployees.length < 2) {
+      scrollHandler(10);
+    }
+  }, [filteredEmployees, gender, position, search, stack]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
@@ -42,10 +52,10 @@ const ListEmployees = () => {
     }
   }, [fetching, page]);
 
-  const scrollHandler = (e) => {
+  const scrollHandler = () => {
     if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
+      document.documentElement.scrollHeight -
+        (document.documentElement.scrollTop + window.innerHeight) <
       100
     ) {
       setFetching(true);
