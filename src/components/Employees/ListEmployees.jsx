@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setEmployees } from "../../redux/slices/employeeSlice";
+import { Link } from "react-router-dom";
 
 const ListEmployees = () => {
   const dispatch = useDispatch();
@@ -45,19 +46,26 @@ const ListEmployees = () => {
   return (
     <div className="mx-auto max-w-[1590px] px-6 mt-8 overflow-y-auto">
       <div className="">
-        <div className="grid  grid-cols-4 w-full">
+        <div className="grid  grid-cols-2 sm:grid-cols-4 w-full">
           <div className="py-4 px-2 ">ФИО</div>
           <div className="py-4 px-2 ">Должность</div>
-          <div className="py-4 px-2 ">Телефон</div>
-          <div className="py-4 px-2">Дата рождения</div>
+          <div className="py-4 px-2 hidden sm:block">Телефон</div>
+          <div className="py-4 px-2 hidden sm:block">Дата рождения</div>
         </div>
         {employees.map((employee, index) => (
-          <div key={index} className="grid grid-cols-4 hover:bg-[#F2F2F2]">
-            <div className="py-4 px-2 ">{employee.name}</div>
-            <div className="py-4 px-2 ">{employee.position}</div>
-            <div className="py-4 px-2 ">{employee.phone}</div>
-            <div className="py-4 px-2">{employee.birthdate}</div>
-          </div>
+          <Link to={`/employee/${employee.id}`} key={index}>
+            <div
+              key={index}
+              className="grid grid-cols-2 sm:grid-cols-4 hover:bg-[#F2F2F2]"
+            >
+              <div className="py-4 px-2 ">{employee.name}</div>
+              <div className="py-4 px-2 ">{employee.position}</div>
+              <div className="py-4 px-2 hidden sm:block">{employee.phone}</div>
+              <div className="py-4 px-2 hidden sm:block">
+                {employee.birthdate}
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
