@@ -1,6 +1,6 @@
 import React from "react";
-import LinksPages from "./LinksPages";
-import Employees from "./Employees/Employees";
+import LinksPages from "../components/LinksPages";
+import Employees from "../components/Employees/Employees";
 
 const Home = () => {
   return (
