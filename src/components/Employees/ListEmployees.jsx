@@ -7,8 +7,17 @@ import { Link } from "react-router-dom";
 const ListEmployees = () => {
   const dispatch = useDispatch();
   const { employees } = useSelector((state) => state.employee);
+  const { search } = useSelector((state) => state.search);
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
+
+  const filteredEmployees = employees.filter(
+    (employee) =>
+      employee.name.toLowerCase().includes(search.toLowerCase()) ||
+      employee.position.toLowerCase().includes(search.toLowerCase()) ||
+      employee.phone.toLowerCase().includes(search.toLowerCase()) ||
+      employee.birthdate.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
@@ -52,7 +61,7 @@ const ListEmployees = () => {
           <div className="py-4 px-2 hidden sm:block">Телефон</div>
           <div className="py-4 px-2 hidden sm:block">Дата рождения</div>
         </div>
-        {employees.map((employee, index) => (
+        {filteredEmployees.map((employee, index) => (
           <Link to={`/employee/${employee.id}`} key={index}>
             <div
               key={index}
