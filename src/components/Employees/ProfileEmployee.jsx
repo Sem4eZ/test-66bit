@@ -27,16 +27,16 @@ const ProfileEmployee = () => {
   return (
     <div className="mx-auto max-w-[1590px] px-6">
       <LinksPages name={employee.name} />
-      <div className="flex">
+      <div className="flex ">
         <img
           src={employee.photo}
           alt=""
           className="rounded-full w-[105px] h-[105px]"
         />
-        <div className="ml-4">
+        <div className="ml-4 pr-2 sm:pr-0">
           <div className="font-bold text-xl mb-2">{employee.name}</div>
           <div className="font-medium text-sm">{employee.position}</div>
-          <div>
+          <div className="">
             {employee.stack && employee.stack.length > 0 && (
               <div className="flex gap-2">
                 {employee.stack.map((stackItem, index) => (
