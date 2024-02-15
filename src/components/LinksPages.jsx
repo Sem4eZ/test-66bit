@@ -6,15 +6,13 @@ const LinksPages = ({ name }) => {
     <div className="container flex mx-auto max-w-[1590px] sm:px-6 font-medium my-7 items-center overflow-x-hidden">
       {!name && (
         <>
-          <Link to={"/"}>
-            <button
-              to={"/"}
-              style={{ color: "rgba(176, 176, 176, 1)" }}
-              className="mr-4 hover:underline "
-            >
-              Главная
-            </button>
-          </Link>
+          <button
+            to={"/"}
+            style={{ color: "rgba(176, 176, 176, 1)" }}
+            className="mr-4 hover:underline"
+          >
+            Главная
+          </button>
           <div className="mr-4">
             <svg
               width="16"
@@ -33,9 +31,14 @@ const LinksPages = ({ name }) => {
           </div>
         </>
       )}
-      <div style={{ color: "rgba(176, 176, 176, 1)" }} className="mr-4">
-        Список сотрудников
-      </div>
+      <Link to={"/"}>
+        <button
+          style={{ color: "rgba(176, 176, 176, 1)" }}
+          className="mr-4 hover:underline"
+        >
+          Список сотрудников
+        </button>
+      </Link>
       {name && (
         <div className="mr-4">
           <svg
