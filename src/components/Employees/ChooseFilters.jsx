@@ -1,14 +1,28 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  setGender,
-  setPosition,
-  setStack,
+  setRemoveGender,
+  setRemovePosition,
+  setRemoveStack,
 } from "../../redux/slices/filterSlice";
+
 const ChooseFilters = () => {
+  const dispatch = useDispatch();
   const { position } = useSelector((state) => state.filter);
   const { gender } = useSelector((state) => state.filter);
   const { stack } = useSelector((state) => state.filter);
+
+  const handleRemovePosition = () => {
+    dispatch(setRemovePosition(position));
+  };
+
+  const handleRemoveGender = () => {
+    dispatch(setRemoveGender(gender));
+  };
+
+  const handleRemoveStack = () => {
+    dispatch(setRemoveStack(stack));
+  };
 
   return (
     <div className="bg-[#F2F2F2] ">
@@ -26,6 +40,7 @@ const ChooseFilters = () => {
                   viewBox="0 0 10 10"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={handleRemovePosition}
                 >
                   <path
                     fillRule="evenodd"
@@ -46,6 +61,7 @@ const ChooseFilters = () => {
                   viewBox="0 0 10 10"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={handleRemoveGender}
                 >
                   <path
                     fillRule="evenodd"
@@ -66,6 +82,7 @@ const ChooseFilters = () => {
                   viewBox="0 0 10 10"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={handleRemoveStack}
                 >
                   <path
                     fillRule="evenodd"

@@ -19,9 +19,25 @@ const filterSlice = createSlice({
     setStack(state, action) {
       state.stack = action.payload;
     },
+    setRemovePosition(state) {
+      state.position = "";
+    },
+    setRemoveGender(state) {
+      state.gender = "";
+    },
+    setRemoveStack(state) {
+      state.stack = "";
+    },
   },
 });
 
-export const { setPosition, setGender, setStack } = filterSlice.actions;
+export const {
+  setPosition,
+  setGender,
+  setStack,
+  setRemovePosition,
+  setRemoveGender,
+  setRemoveStack,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;

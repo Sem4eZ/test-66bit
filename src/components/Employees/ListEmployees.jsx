@@ -24,7 +24,7 @@ const ListEmployees = () => {
   );
 
   useEffect(() => {
-    if (filteredEmployees.length < 2) {
+    if (filteredEmployees.length < 4) {
       scrollHandler(10);
     }
   }, [filteredEmployees, gender, position, search, stack]);

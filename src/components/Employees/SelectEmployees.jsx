@@ -1,29 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   setGender,
   setPosition,
   setStack,
 } from "../../redux/slices/filterSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SelectEmployees = () => {
   const dispatch = useDispatch();
-  const [position, setPositionLocal] = useState("");
-  const [gender, setGenderLocal] = useState("");
-  const [stack, setStackLocal] = useState("");
+
+  const { position, gender, stack } = useSelector((state) => state.filter);
 
   const handlePositionChange = (e) => {
-    setPositionLocal(e.target.value);
     dispatch(setPosition(e.target.value));
   };
 
   const handleGenderChange = (e) => {
-    setGenderLocal(e.target.value);
     dispatch(setGender(e.target.value));
   };
 
   const handleStackChange = (e) => {
-    setStackLocal(e.target.value);
     dispatch(setStack(e.target.value));
   };
   return (
