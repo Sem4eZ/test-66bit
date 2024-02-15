@@ -25,7 +25,11 @@ const SelectEmployees = () => {
   return (
     <div className="flex sm:justify-center font-normal pt-3 pb-4 md:py-6 text-[12px] sm:text-[20px] gap-3 sm:gap-8">
       <div className="">
-        <select value={position} onChange={handlePositionChange}>
+        <select
+          value={position}
+          onChange={handlePositionChange}
+          className="outline-none cursor-pointer"
+        >
           <option value="">Должность</option>
           <option value="Frontend-разработчик">Frontend</option>
           <option value="Backend-разработчик">Backend</option>
@@ -35,14 +39,22 @@ const SelectEmployees = () => {
         </select>
       </div>
       <div>
-        <select value={gender} onChange={handleGenderChange}>
+        <select
+          value={gender}
+          onChange={handleGenderChange}
+          className="outline-none cursor-pointer"
+        >
           <option value="">Пол</option>
           <option value="Мужчина">Мужчина</option>
           <option value="Женщина">Женщина</option>
         </select>
       </div>
       <div>
-        <select value={stack} onChange={handleStackChange}>
+        <select
+          value={stack}
+          onChange={handleStackChange}
+          className="outline-none cursor-pointer"
+        >
           <option value="">Стэк технологий</option>
           <option value="CSharp">CSharp</option>
           <option value="React">React</option>
