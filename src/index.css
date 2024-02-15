@@ -11,7 +11,7 @@ body {
 
 body.dark-theme {
   background-color: #292929;
-  color: #fff; /* Пример цветов для темной темы */
+  color: #f5f5f5;
 }
 
 :root {
