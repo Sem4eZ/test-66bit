@@ -14,7 +14,7 @@ const InputSearchEmployees = () => {
         style={{ color: "text-[rgba(176, 176, 176, 1)]" }}
         type="text"
         placeholder="Поиск"
-        className="border 1 w-full p-2 rounded-md "
+        className="border 1 w-full p-2 rounded-md bg-transparent"
         onChange={handleSearchChange}
       />
     </div>

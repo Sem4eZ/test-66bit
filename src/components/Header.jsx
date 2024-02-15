@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Toggle } from "./Toggle/Toggle";
 import { useDispatch, useSelector } from "react-redux";
-import useLocalStorage from "use-local-storage";
 import { Link } from "react-router-dom";
 import { setTheme } from "../redux/slices/themeSlice";
 
 const Header = () => {
-  const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [isDark, setIsDark] = useLocalStorage("isDark", preference);
+  const [isDark, setIsDark] = useState(false);
   const dispatch = useDispatch();
   const { theme } = useSelector((state) => state.theme);
 
@@ -15,8 +13,19 @@ const Header = () => {
     setIsDark(!isDark);
     dispatch(setTheme(isDark ? "light" : "dark"));
   };
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark-theme");
+    } else {
+      document.body.classList.remove("dark-theme");
+    }
+  }, [theme]);
   return (
-    <header className={`shadow-md ${theme === "dark" ? "bg-[#292929]" : ""} `}>
+    <header
+      data-theme={isDark ? "dark" : "light"}
+      className={`shadow-md ${theme === "dark" ? "bg-[#292929]" : ""} `}
+    >
       <div
         className="mx-auto flex max-w-[1590px]
     max-h-[90px] items-center justify-between p-6 px-6 "

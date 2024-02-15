@@ -10,6 +10,7 @@ const SelectEmployees = () => {
   const dispatch = useDispatch();
 
   const { position, gender, stack } = useSelector((state) => state.filter);
+  const { theme } = useSelector((state) => state.theme);
 
   const handlePositionChange = (e) => {
     dispatch(setPosition(e.target.value));
@@ -28,7 +29,9 @@ const SelectEmployees = () => {
         <select
           value={position}
           onChange={handlePositionChange}
-          className="outline-none cursor-pointer"
+          className={`outline-none cursor-pointer  ${
+            theme === "dark" ? "text-[#f5f5f5] bg-[#292929]" : ""
+          }`}
         >
           <option value="">Должность</option>
           <option value="Frontend-разработчик">Frontend</option>
@@ -42,7 +45,9 @@ const SelectEmployees = () => {
         <select
           value={gender}
           onChange={handleGenderChange}
-          className="outline-none cursor-pointer"
+          className={`outline-none cursor-pointer  ${
+            theme === "dark" ? "text-[#f5f5f5] bg-[#292929]" : ""
+          }`}
         >
           <option value="">Пол</option>
           <option value="Мужчина">Мужчина</option>
@@ -53,7 +58,9 @@ const SelectEmployees = () => {
         <select
           value={stack}
           onChange={handleStackChange}
-          className="outline-none cursor-pointer"
+          className={`outline-none cursor-pointer  ${
+            theme === "dark" ? "text-[#f5f5f5] bg-[#292929]" : ""
+          }`}
         >
           <option value="">Стэк технологий</option>
           <option value="CSharp">CSharp</option>

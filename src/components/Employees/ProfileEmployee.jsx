@@ -2,10 +2,12 @@ import React, { useState, useEffect, useNavigate } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import LinksPages from "../LinksPages";
+import { useSelector } from "react-redux";
 
 const ProfileEmployee = () => {
   const { id } = useParams();
   const [employee, setEmployee] = useState([]);
+  const { theme } = useSelector((state) => state.theme);
   useEffect(() => {
     async function fetchEmployees() {
       try {
@@ -42,7 +44,11 @@ const ProfileEmployee = () => {
                 {employee.stack.map((stackItem, index) => (
                   <div
                     key={index}
-                    className="bg-[#F2F2F2] py-2.5 px-4 rounded-md mb-5 mt-3"
+                    className={`bg-[#F2F2F2] py-2.5 px-4 rounded-md mb-5 mt-3 ${
+                      theme === "dark"
+                        ? "text-[#f5f5f5] bg-[#3e3e3e]"
+                        : "text-[#292929] bg-[#f2f2f2]"
+                    }`}
                   >
                     {stackItem}
                   </div>
@@ -56,7 +62,13 @@ const ProfileEmployee = () => {
         <hr />
       </div>
 
-      <div className="max-w-[300px]">
+      <div
+        className={`max-w-[300px] ${
+          theme === "dark"
+            ? "text-[#f5f5f5] "
+            : "text-[#292929] "
+        }`}
+      >
         <div className="mb-4 mt-5 font-semibold">Основная информация</div>
         <div>
           <div className="flex justify-between text-sm font-medium mb-3">

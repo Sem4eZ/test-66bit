@@ -9,6 +9,7 @@ const ListEmployees = () => {
   const { employees } = useSelector((state) => state.employee);
   const { search } = useSelector((state) => state.search);
   const { position, gender, stack } = useSelector((state) => state.filter);
+  const { theme } = useSelector((state) => state.theme);
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
 
@@ -65,7 +66,11 @@ const ListEmployees = () => {
   return (
     <div className="mx-auto max-w-[1590px] px-6 mt-8 overflow-y-auto">
       <div className="">
-        <div className="grid  grid-cols-2 sm:grid-cols-4 w-full">
+        <div
+          className={`grid  grid-cols-2 sm:grid-cols-4 w-full ${
+            theme === "dark" ? "text-[#b0b0b0]" : "text-[#b0b0b0]"
+          }`}
+        >
           <div className="py-4 px-2 ">ФИО</div>
           <div className="py-4 px-2 ">Должность</div>
           <div className="py-4 px-2 hidden sm:block">Телефон</div>
@@ -75,7 +80,11 @@ const ListEmployees = () => {
           <Link to={`/employee/${employee.id}`} key={index}>
             <div
               key={index}
-              className="grid grid-cols-2 sm:grid-cols-4 hover:bg-[#F2F2F2]"
+              className={`grid grid-cols-2 sm:grid-cols-4  ${
+                theme === "dark"
+                  ? "text-[#f5f5f5] hover:bg-[#3e3e3e]"
+                  : "text-[#292929] hover:bg-[#F2F2F2]"
+              }`}
             >
               <div className="py-4 px-2 ">{employee.name}</div>
               <div className="py-4 px-2 ">{employee.position}</div>

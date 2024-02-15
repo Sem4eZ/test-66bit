@@ -9,6 +9,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.dark-theme {
+  background-color: #292929;
+  color: #fff; /* Пример цветов для темной темы */
+}
+
 :root {
   --background-color: #f6f6f6;
   --foreground-color: #003cff;

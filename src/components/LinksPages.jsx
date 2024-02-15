@@ -6,7 +6,7 @@ const LinksPages = ({ name }) => {
   const { theme } = useSelector((state) => state.theme);
 
   return (
-    <div className="container flex mx-auto max-w-[1590px] pl-6 font-medium my-7 items-center overflow-x-hidden bg-slate-600">
+    <div className="container flex mx-auto max-w-[1590px]  font-medium my-7 items-center overflow-x-hidden ">
       {!name && (
         <>
           <button
