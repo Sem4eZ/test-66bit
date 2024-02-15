@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setEmployees } from "../../redux/slices/employeeSlice";
 
 const ListEmployees = () => {
-  const [employees, setEmployees] = useState([]);
+  const dispatch = useDispatch();
+  const { employees } = useSelector((state) => state.employee);
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
 
@@ -18,11 +22,10 @@ const ListEmployees = () => {
         `https://frontend-test-api.stk8s.66bit.ru/api/Employee/?page=${page}`
       )
         .then((response) => {
-          console.log(response);
           return response.json();
         })
         .then((array) => {
-          setEmployees((prevEmployees) => [...prevEmployees, ...array]);
+          dispatch(setEmployees(array));
           setPage((page) => page + 1);
         })
         .finally(() => setFetching(false));

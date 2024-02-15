@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
+import ProfileEmployee from "./components/Employees/ProfileEmployee";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/employee/:id" element={<ProfileEmployee />} /> */}
+        <Route path="/employee/:id" element={<ProfileEmployee />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
